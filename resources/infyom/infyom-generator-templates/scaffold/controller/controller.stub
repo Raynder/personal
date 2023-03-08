@@ -1,0 +1,101 @@
+<?php
+
+namespace $NAMESPACE_CONTROLLER$;
+
+use $NAMESPACE_REQUEST$\Create$MODEL_NAME$Request;
+use $NAMESPACE_REQUEST$\Update$MODEL_NAME$Request;
+use $NAMESPACE_REPOSITORY$\$MODEL_NAME$Repository;
+use $NAMESPACE_APP$\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
+use Response;
+
+class $MODEL_NAME$Controller extends AppBaseController
+{
+    private $$MODEL_NAME_CAMEL$Repository;
+
+    public function __construct($MODEL_NAME$Repository $$MODEL_NAME_CAMEL$Repo)
+    {
+        $this->$MODEL_NAME_CAMEL$Repository = $$MODEL_NAME_CAMEL$Repo;
+    }
+
+    public function index()
+    {
+        return view("{$this->basePath}$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.index");
+    }
+
+    public function search(Request $request)
+    {
+        $searchData = $request->all();
+        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->all($searchData);
+
+        return view("{$this->basePath}$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.table", [
+            "$MODEL_NAME_PLURAL_CAMEL$" => $$MODEL_NAME_PLURAL_CAMEL$,
+            "page" => $request->input("page", 0)
+        ]);
+    }
+
+    public function find(Request $request)
+    {
+        $$MODEL_NAME_PLURAL_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->findToSelect2js($request->input("q"));
+        return json_encode($$MODEL_NAME_PLURAL_CAMEL$);
+    }
+
+    public function create()
+    {
+        return view("{$this->basePath}$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.create", ["$MODEL_NAME_CAMEL$" => new $MODEL_NAME$()]);
+    }
+
+    public function store(Create$MODEL_NAME$Request $request)
+    {
+        $input = $request->all();
+        $this->$MODEL_NAME_CAMEL$Repository->create($input);
+        return response()->json("Salvo com sucesso.", 200);
+    }
+
+    public function show($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            return response()->json("Registro não encontrado.", 500);
+        }
+
+        return view("{$this->basePath}$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.show", ["$MODEL_NAME_CAMEL$" => $$MODEL_NAME_CAMEL$]);
+    }
+
+    public function edit($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            return response()->json("Registro não encontrado.", 500);
+        }
+
+        return view("{$this->basePath}$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.edit",["$MODEL_NAME_CAMEL$" => $$MODEL_NAME_CAMEL$]);
+    }
+
+    public function update($id, $MODEL_NAME$Request $request)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            return response()->json("Registro não encontrado.", 500);
+        }
+
+        $this->$MODEL_NAME_CAMEL$Repository->update($$MODEL_NAME_CAMEL$, $request->all());
+        return response()->json("Salvo com sucesso.", 200);
+    }
+
+    public function destroy($id)
+    {
+        $$MODEL_NAME_CAMEL$ = $this->$MODEL_NAME_CAMEL$Repository->find($id);
+
+        if (empty($$MODEL_NAME_CAMEL$)) {
+            return response()->json("Registro não encontrado.", 500);
+        }
+
+        $this->$MODEL_NAME_CAMEL$Repository->delete($$MODEL_NAME_CAMEL$);
+        return $id;
+    }
+}
