@@ -1,10 +1,10 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "Flytax",
+    "description": "personal",
     "keywords": [
-        "flytax",
-        "tributação"
+        "personal",
+        "academia"
     ],
     "license": "PRIVATE",
     "require": {

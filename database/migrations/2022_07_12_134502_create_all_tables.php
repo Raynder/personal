@@ -167,13 +167,16 @@ class CreateAllTables extends Migration
         });
 
         Schema::create('empresa_users', function (Blueprint $table) {
-            $table->unsignedInteger('empresa_id');
-            $table->unsignedInteger('user_id');
+            // $table->unsignedInteger('empresa_id');
+            // $table->unsignedInteger('user_id');
 
-            $table->foreign('empresa_id')->references('id')->on('empresas');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('empresa_id')->references('id')->on('empresas');
+            // $table->foreign('user_id')->references('id')->on('users');
 
-            $table->primary(['empresa_id', 'user_id']);
+            // $table->primary(['empresa_id', 'user_id']);
+            $table->foreignId('empresa_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->timestamps();
         });
 
         Schema::table('users', function (BluePrint $table) {
