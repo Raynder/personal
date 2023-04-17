@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Certificado;
+use App\Models\Aluno;
 use App\Repositories\AbstractCrudRepository;
 
-class CertificadoRepository extends AbstractCrudRepository
+class AlunoRepository extends AbstractCrudRepository
 {
-    protected $modelClass = Certificado::class;
+    protected $modelClass = Aluno::class;
 
     public function all($params)
     {
@@ -19,11 +19,6 @@ class CertificadoRepository extends AbstractCrudRepository
         if (isset($params['filter_nome'])) {
             $qry = $qry->where('nome', 'ilike', "%{$params['filter_nome']}%");
         }
-
-        if (isset($params['filter_cnpj'])) {
-            $qry = $qry->where('cnpj', '=', $params['filter_cnpj']);
-        }
-
         if (isset($params['filter_deleted']) && $params['filter_deleted'] == 'S') {
             $qry = $qry->withTrashed();
         }

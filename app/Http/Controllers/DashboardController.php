@@ -16,9 +16,9 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $certificados = Certificado::where('empresa_id', session()->get('empresa_id'))->get();
+        $alunos = [];
         return view('dashboard.index', [
-            'certificados' => $certificados
+            'alunos' => $alunos
         ]);
     }
 }

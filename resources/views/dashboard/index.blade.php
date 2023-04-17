@@ -1,7 +1,7 @@
 <x-app-layout>
-    @if (count($certificados) > 0)
+    @if (count($alunos) > 0)
         <h4 class="breadcrumb-wrapper">
-            Certificados
+            Alunos
         </h4>
         <div class="content">
 
@@ -9,7 +9,7 @@
 
             <div class="clearfix"></div>
 
-            <form name="formSearch" id="formSearch" method="post" action="{{ route('certificados.search') }}">
+            <form name="formSearch" id="formSearch" method="post" action="{{ route('alunos.search') }}">
                 @csrf
                 {!! Form::hidden('page', 0, ['id' => 'page']) !!}
                 {!! Form::hidden('filter_sort', 'id') !!}
@@ -24,7 +24,7 @@
                             {{-- <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3 form-group">
                                 <label class="form-label">Razão Social / Fantasia</label>
                                 <input type="text" class="form-control"
-                                    placeholder="Nome ou parte do nome da certificado" name="filter_nome">
+                                    placeholder="Nome ou parte do nome da aluno" name="filter_nome">
                             </div> --}}
                             <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  form-group">
                                 <label class="form-label">CNPJ</label>
@@ -38,7 +38,7 @@
                             </div>
                             <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2  form-group pt-4">
                                 <button type="button" class="btn btn-sm btn-secondary"
-                                    onclick="Tela.abrirJanela('{{ route('certificados.create') }}', 'Novo Cliente', 'lg')">
+                                    onclick="Tela.abrirJanela('{{ route('alunos.create') }}', 'Novo Cliente', 'lg')">
                                     <i class="fa fa-plus"></i> Adicionar
                                 </button>
                             </div>
@@ -76,12 +76,12 @@
         <div class="card overflow-hidden">
             <!-- Help Center Header -->
             <div class="help-center-header d-flex flex-column justify-content-center align-items-center">
-                <h3 class="zindex-1 text-center">Você não possui nenhum certificado cadastrado</h3>
+                <h3 class="zindex-1 text-center">Você não possui nenhum aluno cadastrado</h3>
 
                 <p class="zindex-1 text-center px-3 mb-0 mt-3">
                     <button class="btn btn-primary btn-lg"
-                        onclick="Tela.abrirJanela('{{ route('certificados.create') }}', 'Novo Certificado', 'lg')">
-                        <i class="fa fa-plus" style="margin-right: 10px;"></i> Cadastrar meu primeiro certificado
+                        onclick="Tela.abrirJanela('{{ route('alunos.create') }}', 'Novo Aluno', 'xs')">
+                        <i class="fa fa-plus" style="margin-right: 10px;"></i> Cadastrar meu primeiro aluno
                     </button>
                 </p>
             </div>

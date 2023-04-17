@@ -8,28 +8,60 @@
                     <div data-i18n="Dashboards">Dashboard</div>
                 </a>
             </li>
-            @if (session()->has('empresa_id'))
-                <li class="menu-item">
-                    <a href="{{ route('acessos.index') }}" class="menu-link {{ Request::is('acessos*') ? 'active' : '' }}">
-                        <i class="menu-icon tf-icons bx bxs-user-account"></i>
-                        <div>Acessos</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="https://www.flybisistemas.com.br/dw/FlyTokenSetup.exe" target="_blank" class="menu-link">
-                        <i class="menu-icon tf-icons fa fa-external-link-alt"></i>
-                        <div>Baixar App</div>
-                    </a>
-                </li>
-            @else
-                <li class="menu-item">
-                    <a href="{{ route('empresas.index') }}"
-                        class="menu-link {{ Request::is('empresas*') ? 'active' : '' }}">
-                        <i class="menu-icon tf-icons bx bxs-city"></i>
-                        <div>Empresas</div>
-                    </a>
-                </li>
-            @endif
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <div data-i18n="Pages">Cadastros</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('alunos.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons fas fa-users"></i>
+                            <div>Alunos</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="menu-icon tf-icons fas fa-running"></i>
+                            <div>Exercicios</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('treinos.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons fas fa-dumbbell"></i>
+                            <div>Treinos</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    Utilitários
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('permissions.index') }}"
+                            class="menu-link {{ Request::is('permissions*') ? 'active' : '' }}">
+                            <i class="menu-icon tf-icons bx bx-door-open"></i>
+                            <div>Permissões</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('roles.index') }}"
+                            class="menu-link {{ Request::is('roles*') ? 'active' : '' }}">
+                            <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                            <div>Grupos</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="{{ route('users.index') }}"
+                            class="menu-link {{ Request::is('user*') ? 'active' : '' }}">
+                            <i class="menu-icon tf-icons bx bx-user"></i>
+                            <div>Usuários</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </aside>

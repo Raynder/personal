@@ -1,12 +1,12 @@
 @include('adminlte-templates::common.errors')
 {!! Form::open([
-    'route' => 'certificados.store',
+    'route' => 'alunos.store',
     'id' => 'form',
-    'component' => 'certificados',
+    'component' => 'alunos',
     'autocomplete' => 'off',
 ]) !!}
 <div class="row">
-    @include('certificados.fields')
+    @include('alunos.fields')
     <x-form-buttons :create="true" />
 </div>
 {!! Form::close() !!}

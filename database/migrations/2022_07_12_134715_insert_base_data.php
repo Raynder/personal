@@ -14,7 +14,7 @@ class InsertBaseData extends Migration
     {
         $users = [
             '0' => [
-                'name' => 'Flybi Sistemas',
+                'name' => 'Suporte',
                 'email' => 'suporte@flybisistemas.com.br',
                 'password' => bcrypt('suporte'),
                 'created_at' => Carbon::now(),
@@ -27,25 +27,21 @@ class InsertBaseData extends Migration
             ['name' => 'dashboard',                   'description' => 'Menu Dashboard',      'order' => '1000', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
 
             ['name' => 'cadastros.menu',                  'description' => 'Menu Cadastros',          'order' => '2000', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.tributos',              'description' => 'Tributos',                'order' => '2020', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.tributos.cadastrar',    'description' => 'Tributos - Cadastrar',    'order' => '2021', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.tributos.alterar',      'description' => 'Tributos - Alterar',      'order' => '2022', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.tributos.excluir',      'description' => 'Tributos - Excluir',      'order' => '2023', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            
-            ['name' => 'cadastros.pagamentos',            'description' => 'Pagamentos',              'order' => '2030', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.pagamentos.cadastrar',  'description' => 'Pagamentos - Cadastrar',  'order' => '2031', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.pagamentos.alterar',    'description' => 'Pagamentos - Alterar',    'order' => '2032', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'cadastros.pagamentos.excluir',    'description' => 'Pagamentos - Excluir',    'order' => '2033', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            
-            ['name' => 'operacional.menu',                'description' => 'Menu Operacional',        'order' => '3000', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'operacional.clientes',            'description' => 'Clientes',                'order' => '3010', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'operacional.clientes.cadastrar',  'description' => 'Clientes - Cadastrar',    'order' => '3011', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'operacional.clientes.alterar',    'description' => 'Clientes - Alterar',      'order' => '3012', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'operacional.clientes.excluir',    'description' => 'Clientes - Excluir',      'order' => '3013', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
-            ['name' => 'operacional.clientes.ambiente',   'description' => 'Clientes - Ambiente',     'order' => '3014', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.alunos',              'description' => 'Alunos',                'order' => '2020', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.alunos.cadastrar',    'description' => 'Alunos - Cadastrar',    'order' => '2021', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.alunos.alterar',      'description' => 'Alunos - Alterar',      'order' => '2022', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.alunos.excluir',      'description' => 'Alunos - Excluir',      'order' => '2023', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
 
-            ['name' => 'relatorios.menu',                 'description' => 'Menu Relatórios',         'order' => '4000', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.exercicios',          'description' => 'Exercícios',            'order' => '2030', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.exercicios.cadastrar', 'description' => 'Exercícios - Cadastrar', 'order' => '2031', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.exercicios.alterar',  'description' => 'Exercícios - Alterar',   'order' => '2032', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.exercicios.excluir',  'description' => 'Exercícios - Excluir',   'order' => '2033', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
 
+            ['name' => 'cadastros.treinos',             'description' => 'Treinos',               'order' => '2040', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.treinos.cadastrar',   'description' => 'Treinos - Cadastrar',    'order' => '2041', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.treinos.alterar',     'description' => 'Treinos - Alterar',      'order' => '2042', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            ['name' => 'cadastros.treinos.excluir',     'description' => 'Treinos - Excluir',      'order' => '2043', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
+            
             ['name' => 'utilitarios.menu',                'description' => 'Menu Utilitários',        'order' => '5000', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
 
             ['name' => 'utilitarios.permissoes',          'description' => 'Permissões',              'order' => '5010', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now(), 'guard_name' => 'web'],
@@ -83,19 +79,6 @@ class InsertBaseData extends Migration
 
         $user = User::first();
         $user->assignRole('Master');
-
-        // $empresa = [
-        //     "cnpj" => "07640617000110",
-        //     "cnpj_raiz" => "07640617",
-        //     "razao_social" => "DISTRIBUIDORA BRASIL",
-        //     "fantasia" => "BRASIL",
-        //     "celular" => "62994891113",
-        //     "telefone" => "62994891113",
-        //     "regime_tributario" => null,
-        //     "senha_certificado" => "07640617",
-        // ];
-
-        // DB::table('empresas')->insert($empresa);
     }
 
     public function down()

@@ -1,20 +1,20 @@
 @include('adminlte-templates::common.errors')
-{!! Form::model($certificado, [
-    'route' => ['certificados.update', $certificado->id],
+{!! Form::model($owner, [
+    'route' => ['users.update', $owner->id],
     'id' => 'form',
-    'component' => 'certificados',
+    'component' => '$owner',
     'autocomplete' => 'off',
     'method' => 'patch',
 ]) !!}
 <div class="row">
-    @include('certificados.fields')
+    @include('price::users.fields')
     <x-form-buttons :create="false" />
 </div>
 {!! Form::close() !!}
 <script>
     $(function() {
         $("#form").submit(function(e) {
-            Ajax.salvarRegistroComArquivo($(this));
+            Ajax.salvarRegistro($(this));
             e.preventDefault();
         });
     });

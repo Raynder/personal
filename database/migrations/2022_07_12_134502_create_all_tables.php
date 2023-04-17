@@ -152,61 +152,56 @@ class CreateAllTables extends Migration
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
 
-
-        Schema::create('empresas', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('cnpj', 15);
-            $table->string('cnpj_raiz', 8);
-            $table->string('razao_social', 150);
-            $table->string('fantasia', 150)->nullable();
-            $table->string('celular', 16);
-            $table->string('telefone', 16);
-            $table->string('regime_tributario', 1)->nullable();
+        Schema::create('alunos', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('nome');
+            $table->string('email')->unique();
+            $table->string('celular')->nullable();
+            $table->string('password')->nullable();
+            $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
-
-        Schema::create('empresa_users', function (Blueprint $table) {
-            // $table->unsignedInteger('empresa_id');
-            // $table->unsignedInteger('user_id');
-
-            // $table->foreign('empresa_id')->references('id')->on('empresas');
-            // $table->foreign('user_id')->references('id')->on('users');
-
-            // $table->primary(['empresa_id', 'user_id']);
-            $table->foreignId('empresa_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+        
+        Schema::create('exercicios', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('nome');
+            $table->string('descricao');
+            $table->string('imagem');
+            $table->string('video');
+            $table->string('musculo');
+            $table->string('tipo');
             $table->timestamps();
         });
 
-        Schema::table('users', function (BluePrint $table) {
-            $table->foreignId('empresa_id')->nullable()->constrained('empresas');
-        });
-
-        Schema::create('certificados', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('empresa_id')->constrained();
-            $table->string('cnpj', 14);
-            $table->string('razao_social', 150)->nullable();
-            $table->string('fantasia', 150)->nullable();
-            $table->string('senha', 36);
-            $table->text('certificado');
-            $table->string('num_serie', 20)->nullable();
-            $table->string('validade', 10)->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('acessos', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('certificado_id')->constrained();
-            $table->string('chave', 44)->unique();
-            $table->string('status', 2)->default('P')->comment('P = Pendente, A = Ativo, I = Inativo');
-            $table->string('usuario', 50)->nullable();
-            $table->string('uuid_usuario', 36)->nullable();
-            $table->dateTime('data_limite')->nullable();
+        Schema::create('treinos', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('nome');
+            $table->string('descricao');
+            $table->string('objetivo');
+            $table->string('tipo');
             $table->timestamps();
         });
+
+        Schema::create('treino_exercicio', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('treino_id');
+            $table->unsignedBigInteger('exercicio_id');
+            $table->string('series');
+            $table->string('repeticoes');
+            $table->string('carga');
+            $table->string('tempo');
+            $table->string('descanso');
+            $table->timestamps();
+        });
+
+        Schema::create('treino_aluno', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('treino_id');
+            $table->unsignedBigInteger('aluno_id');
+            $table->string('status');
+            $table->timestamps();
+        });
+
     }
 
     public function down()
