@@ -47,7 +47,11 @@ class AlunoController extends Controller
 
     public function show($id)
     {
-        //
+        $aluno = $this->alunoRepository->find($id);
+        if(!$aluno){
+            return response()->json("Registro não encontrado.", 500);
+        }
+        return view('alunos.show', compact('aluno'));
     }
 
     public function edit($id)

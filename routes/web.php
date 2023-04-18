@@ -8,6 +8,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AcessoController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\ExercicioController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\UserController;

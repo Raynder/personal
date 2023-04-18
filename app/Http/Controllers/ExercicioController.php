@@ -2,83 +2,88 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercicio;
 use Illuminate\Http\Request;
+use App\Repositories\ExercicioRepository;
 
 class ExercicioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    private ExercicioRepository $exercicioRepository;
+
+    public function __construct(ExercicioRepository $exercicioRepository)
+    {
+        $this->exercicioRepository = $exercicioRepository;
+    }
+
     public function index()
     {
-        //
+        return view('exercicios.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('exercicios.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function search(Request $request)
+    {
+        $searchData = $request->all();
+        $exercicios = $this->exercicioRepository->all($searchData);
+
+        return view('exercicios.table', [
+            'exercicios' => $exercicios,
+            'searchData' => $searchData
+        ]);
+    }
+
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->exercicioRepository->create($data);
+
+        return response()->json("Registro salvo com sucesso.", 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $exercicio = $this->exercicioRepository->find($id);
+        if(!$exercicio){
+            return response()->json("Registro não encontrado.", 500);
+        }
+        return view('exercicios.show', compact('exercicio'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $exercicio = $this->exercicioRepository->find($id);
+        if(!$exercicio){
+            return response()->json("Registro não encontrado.", 500);
+        }
+        return view('exercicios.edit', compact('exercicio'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $exercicioModel = $this->exercicioRepository->find($id);
+        if(!$exercicioModel){
+            return response()->json("Registro não encontrado.", 500);
+        }
+        $data = $request->all();
+        $this->exercicioRepository->update($exercicioModel, $data);
+
+        return response()->json("Registro atualizado com sucesso.", 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $exercicio = $this->exercicioRepository->find($id);
+
+        if(!$exercicio){
+            return response()->json("Registro não encontrado.", 500);
+        }
+
+        $this->exercicioRepository->delete($exercicio);
+        return response()->json("Registro excluído com sucesso.", 200);
     }
 }

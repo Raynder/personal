@@ -161,26 +161,6 @@ class CreateAllTables extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        
-        Schema::create('exercicios', function(Blueprint $table){
-            $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('descricao');
-            $table->string('imagem');
-            $table->string('video');
-            $table->string('musculo');
-            $table->string('tipo');
-            $table->timestamps();
-        });
-
-        Schema::create('treinos', function(Blueprint $table){
-            $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('descricao');
-            $table->string('objetivo');
-            $table->string('tipo');
-            $table->timestamps();
-        });
 
         Schema::create('treino_exercicio', function(Blueprint $table){
             $table->bigIncrements('id');

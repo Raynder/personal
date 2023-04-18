@@ -20,7 +20,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ route('exercicios.index') }}" class="menu-link">
                             <i class="menu-icon tf-icons fas fa-running"></i>
                             <div>Exercicios</div>
                         </a>
