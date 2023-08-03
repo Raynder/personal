@@ -1,8 +1,0 @@
-<li class="menu-item">
-    <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.index') }}"
-       class="menu-link {{ Request::is('$ROUTE_PREFIX$$MODEL_NAME_PLURAL_CAMEL$*') ? 'active' : '' }}">
-       <i class="menu-icon tf-icons bx bx-square-rounded"></i>
-        <div>$MODEL_NAME_PLURAL_HUMAN$</div>
-    </a>
-</li>
-
