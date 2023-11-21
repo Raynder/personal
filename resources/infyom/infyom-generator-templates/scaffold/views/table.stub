@@ -1,0 +1,35 @@
+<table class="table table-responsive">
+    <thead class="table-dark">
+        <tr>
+            $FIELD_HEADERS$
+            <th colspan="3">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @forelse($$MODEL_NAME_PLURAL_CAMEL$ as $obj)
+        <tr id="row_{{ $obj->id }}">
+            $FIELD_BODY$
+            <td width="120">
+                <div class='btn-group'>
+                    <a href="javascript:void(0);"
+                       onclick="Tela.abrirJanela('{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$obj->id]) }}', 'Atualizar', 'M')"
+                       class='btn btn-secondary btn-xs'>
+                        <i class="far fa-edit"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="btn btn-danger btn-xs"
+                       onclick="Tela.abrirJanelaExcluir('{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.destroy', [$obj->id]) }}?_token={{csrf_token()}}', '{{$obj->id}}')">
+                        <i class="ace-icon fa fa-trash"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        @empty
+        <tr><td>Nenhum registro encontrado</td></tr>
+    @endforelse
+    </tbody>
+</table>
+<div class="card-footer clearfix">
+    <div class="float-right">
+        @include('layouts.pagination', ['paginator' => $$MODEL_NAME_PLURAL_CAMEL$, 'filtro' => "&".http_build_query(request()->except("page"))])
+    </div>
+</div>

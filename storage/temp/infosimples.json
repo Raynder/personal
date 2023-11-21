@@ -1,0 +1,289 @@
+{
+  "code": 200,
+  "code_message": "A requisição foi processada com sucesso.",
+  "header": {
+    "api_version": "v2",
+    "product": "Consultas",
+    "service": "ecac/comprovante-pagamento",
+    "parameters": {
+      "data_fim": "2022-10-31",
+      "data_inicio": "2022-08-01",
+      "documento_numero": null,
+      "perfil_procurador_cnpj": "07640617000110",
+      "pkcs12_cert_md5": "b816434d7cdf819a05bcbd2765704332",
+      "pkcs12_pass_md5": "25d55ad283aa400af464c76d713c07ad"
+    },
+    "client_name": "75933900125",
+    "token_name": "75933900125",
+    "billable": true,
+    "price": "0.26",
+    "requested_at": "2023-02-06T14:54:34.000-03:00",
+    "elapsed_time_in_milliseconds": 11369,
+    "remote_ip": "179.255.214.190",
+    "signature": "U2FsdGVkX18vj4Djdde813mj76ruuUNEywuIhnMI6+o4hUSmfSxzi/bpVzuyrZD+2pRffoR0RPxlc9v6fC43jg=="
+  },
+  "data_count": 1,
+  "data": [
+    {
+      "documentos": [
+        {
+          "tipo": "DARF",
+          "numero": "007012220878805313",
+          "composicao": "",
+          "apuracao": "31/07/2022",
+          "arrecadacao": "17/08/2022",
+          "vencimento": "19/08/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "155,99",
+          "comprovante_url": "https://storage.googleapis.com/infosimples-api-tmp-files/20230206145433/Mf5uZuohQdBhLSG-UfM3zFgWKpj5zQzS/131588fd9a21b8f99ec05f36fb1d922d.pdf"
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107384043977",
+          "composicao": "",
+          "apuracao": "31/07/2022",
+          "arrecadacao": "17/08/2022",
+          "vencimento": "19/08/2022",
+          "codigo_receita": "0561",
+          "numero_referencia": "",
+          "valor_total": "2.543,61",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007162223029989950",
+          "composicao": "",
+          "apuracao": "01/07/2022",
+          "arrecadacao": "19/08/2022",
+          "vencimento": "19/08/2022",
+          "codigo_receita": "1410",
+          "numero_referencia": "",
+          "valor_total": "31.600,63",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012222898102012",
+          "composicao": "",
+          "apuracao": "31/07/2022",
+          "arrecadacao": "19/08/2022",
+          "vencimento": "19/08/2022",
+          "codigo_receita": "1708",
+          "numero_referencia": "",
+          "valor_total": "128,89",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012222898044047",
+          "composicao": "",
+          "apuracao": "31/07/2022",
+          "arrecadacao": "19/08/2022",
+          "vencimento": "19/08/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "478,36",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107395083908",
+          "composicao": "",
+          "apuracao": "30/06/2022",
+          "arrecadacao": "31/08/2022",
+          "vencimento": "31/08/2022",
+          "codigo_receita": "6012",
+          "numero_referencia": "",
+          "valor_total": "58.594,95",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010134107138072163",
+          "composicao": "",
+          "apuracao": "30/06/2022",
+          "arrecadacao": "31/08/2022",
+          "vencimento": "31/08/2022",
+          "codigo_receita": "0220",
+          "numero_referencia": "",
+          "valor_total": "160.743,79",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007162225638165015",
+          "composicao": "",
+          "apuracao": "01/08/2022",
+          "arrecadacao": "20/09/2022",
+          "vencimento": "20/09/2022",
+          "codigo_receita": "1410",
+          "numero_referencia": "",
+          "valor_total": "31.456,47",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012225160177840",
+          "composicao": "",
+          "apuracao": "31/08/2022",
+          "arrecadacao": "20/09/2022",
+          "vencimento": "20/09/2022",
+          "codigo_receita": "1708",
+          "numero_referencia": "",
+          "valor_total": "33,55",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012223866968527",
+          "composicao": "",
+          "apuracao": "31/08/2022",
+          "arrecadacao": "20/09/2022",
+          "vencimento": "20/09/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "155,99",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012225160142566",
+          "composicao": "",
+          "apuracao": "31/08/2022",
+          "arrecadacao": "20/09/2022",
+          "vencimento": "20/09/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "218,84",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107409152295",
+          "composicao": "",
+          "apuracao": "31/08/2022",
+          "arrecadacao": "20/09/2022",
+          "vencimento": "20/09/2022",
+          "codigo_receita": "0561",
+          "numero_referencia": "",
+          "valor_total": "3.326,55",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107417091089",
+          "composicao": "",
+          "apuracao": "30/06/2022",
+          "arrecadacao": "30/09/2022",
+          "vencimento": "30/09/2022",
+          "codigo_receita": "0220",
+          "numero_referencia": "",
+          "valor_total": "162.605,87",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107417091139",
+          "composicao": "",
+          "apuracao": "30/06/2022",
+          "arrecadacao": "30/09/2022",
+          "vencimento": "30/09/2022",
+          "codigo_receita": "6012",
+          "numero_referencia": "",
+          "valor_total": "59.273,73",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007162229118415001",
+          "composicao": "",
+          "apuracao": "01/09/2022",
+          "arrecadacao": "19/10/2022",
+          "vencimento": "20/10/2022",
+          "codigo_receita": "1410",
+          "numero_referencia": "",
+          "valor_total": "33.068,89",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012229092055066",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "19/10/2022",
+          "vencimento": "20/10/2022",
+          "codigo_receita": "1708",
+          "numero_referencia": "",
+          "valor_total": "67,10",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012226967854823",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "19/10/2022",
+          "vencimento": "20/10/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "155,99",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "007012229091954482",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "19/10/2022",
+          "vencimento": "20/10/2022",
+          "codigo_receita": "5952",
+          "numero_referencia": "",
+          "valor_total": "331,05",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107430048213",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "19/10/2022",
+          "vencimento": "20/10/2022",
+          "codigo_receita": "0561",
+          "numero_referencia": "",
+          "valor_total": "4.005,62",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107438119635",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "31/10/2022",
+          "vencimento": "31/10/2022",
+          "codigo_receita": "0220",
+          "numero_referencia": "",
+          "valor_total": "203.367,22",
+          "comprovante_url": null
+        },
+        {
+          "tipo": "DARF",
+          "numero": "010100107438119711",
+          "composicao": "",
+          "apuracao": "30/09/2022",
+          "arrecadacao": "31/10/2022",
+          "vencimento": "31/10/2022",
+          "codigo_receita": "6012",
+          "numero_referencia": "",
+          "valor_total": "73.212,20",
+          "comprovante_url": null
+        }
+      ],
+      "site_receipt": "https://storage.googleapis.com/infosimples-api-tmp-files/api/ecac/comprovante-pagamento/20230206145433/dZwaONsqXNoQwQwYZEqP5MQu4sIykwX2/9df4403a8d10d5d2c9e05c7418d8e222_0_ROg.html"
+    }
+  ],
+  "errors": [],
+  "site_receipts": [
+    "https://storage.googleapis.com/infosimples-api-tmp-files/api/ecac/comprovante-pagamento/20230206145433/dZwaONsqXNoQwQwYZEqP5MQu4sIykwX2/9df4403a8d10d5d2c9e05c7418d8e222_0_ROg.html"
+  ]
+}
