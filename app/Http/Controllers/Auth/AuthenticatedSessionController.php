@@ -31,23 +31,23 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         // validar recaptcha
-        if ($request->has('recaptcha')) {
-            // Build POST request:
-            $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-            $recaptcha_secret = env('G_SECRET_KEY');
-            $recaptcha_response = $_POST['recaptcha'];
+        // if ($request->has('recaptcha')) {
+        //     // Build POST request:
+        //     $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+        //     $recaptcha_secret = env('G_SECRET_KEY');
+        //     $recaptcha_response = $_POST['recaptcha'];
 
-            // Make and decode POST request:
-            $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-            $recaptcha = json_decode($recaptcha);
+        //     // Make and decode POST request:
+        //     $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+        //     $recaptcha = json_decode($recaptcha);
 
-            if ($recaptcha->success != true) {
-                RateLimiter::hit($request->throttleKey());
-                throw ValidationException::withMessages([
-                    'email' => "Captcha não confirmado. Favor tentar novamente.",
-                ]);
-            }
-        }
+        //     if ($recaptcha->success != true) {
+        //         RateLimiter::hit($request->throttleKey());
+        //         throw ValidationException::withMessages([
+        //             'email' => "Captcha não confirmado. Favor tentar novamente.",
+        //         ]);
+        //     }
+        // }
 
         $request->authenticate();
 
