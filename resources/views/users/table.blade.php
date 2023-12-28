@@ -5,7 +5,7 @@
                 {!! App\Helpers\TableHelper::sortable_column('name', 'Nome') !!}
                 {!! App\Helpers\TableHelper::sortable_column('email', 'E-mail') !!}
                 <th>Empresa</th>
-                <th>Grupo</th>
+                <th>Treino</th>
                 <th class="text-center">Opções</th>
             </tr>
         </thead>

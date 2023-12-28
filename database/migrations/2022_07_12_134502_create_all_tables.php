@@ -155,13 +155,9 @@ class CreateAllTables extends Migration
 
         Schema::create('empresas', function (Blueprint $table) {
             $table->id('id');
-            $table->string('cnpj', 15);
-            $table->string('cnpj_raiz', 8);
             $table->string('razao_social', 150);
             $table->string('fantasia', 150)->nullable();
-            $table->string('celular', 16);
-            $table->string('telefone', 16);
-            $table->string('regime_tributario', 1)->nullable();
+            $table->string("email", 150);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -177,31 +173,96 @@ class CreateAllTables extends Migration
         });
 
         Schema::table('users', function (BluePrint $table) {
+            $table->string('type', '1')->default('F');
             $table->foreignId('empresa_id')->nullable()->constrained('empresas');
         });
 
-        Schema::create('certificados', function (Blueprint $table) {
+        Schema::create('alunos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('empresa_id')->constrained();
-            $table->string('cnpj', 14);
+            $table->string('cnpj', 14)->nullable();
             $table->string('razao_social', 150)->nullable();
             $table->string('fantasia', 150)->nullable();
+            $table->string('nome', 36);
             $table->string('senha', 36);
-            $table->text('certificado');
-            $table->string('num_serie', 20)->nullable();
+            $table->string('email', 150);
+            $table->text('certificado')->nullable();
+            $table->string('num_serie', 100)->nullable();
             $table->string('validade', 10)->nullable();
+            $table->string('token', 50)->nullable();
+            $table->date('validade_token')->nullable();
+            $table->integer('criptografia')->default('0');
+            $table->string('novasenha')->nullable()->after('senha');
+            $table->unique(['empresa_id', 'cnpj']);
+            $table->date('data_validade')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
 
+        //Relação com empresa
+        Schema::create('exercicios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome',45);
+            $table->string('uuid',45);
+
+            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->timestamps();
+        });
+
+        //Relação com empresa
+        Schema::create('treinos', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome',20);
+
+            $table->unsignedBigInteger('empresa_id')->nullable();
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        //Relação com empresa
+        Schema::create('exercicio_treino', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('exercicio_id')->constrained();
+            $table->foreignId('treino_id')->constrained();
+
+            $table->timestamps();
+        });
+
+        //Relação com treino e aluno
+        Schema::create('treino_aluno', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('treino_id')->constrained();
+            $table->foreignId('aluno_id')->constrained();
+            $table->timestamps();
+        });
+
+        //Relação com empresa e exercicio
         Schema::create('acessos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('certificado_id')->constrained();
-            $table->string('chave', 44)->unique();
+            $table->foreignId('aluno_id')->nullable()->constrained();
+            $table->string('chave', 44);
             $table->string('status', 2)->default('P')->comment('P = Pendente, A = Ativo, I = Inativo');
-            $table->string('usuario', 50)->nullable();
-            $table->string('uuid_usuario', 36)->nullable();
+            $table->string('exercicio', 50)->nullable();
+            $table->string('uuid_exercicio', 36)->nullable();
             $table->dateTime('data_limite')->nullable();
+
+            $table->integer('empresa_id')->unsigned()->nullable();
+            $table->foreign('empresa_id')->references('id')->on('empresas');
+
+            $table->unsignedBigInteger('exercicio_id')->nullable();
+            $table->foreign('exercicio_id')->references('id')->on('exercicios')->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('novidades', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->integer('type')->comment('1: new version, 2: question, 3: information');
+            $table->string('version')->comment('version of the update')->unique();
+            $table->string('link')->nullable();
+            $table->text('arquivo')->nullable();
             $table->timestamps();
         });
     }

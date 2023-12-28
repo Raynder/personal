@@ -1,7 +1,7 @@
 {{--<div class="form-group col-md-12 required">
-    {!! Form::label('role_id', 'Grupo de permissões:') !!}
+    {!! Form::label('role_id', 'Treino de permissões:') !!}
     <select style="width:100%;" class="form-control" id="role_id" required name="role_id">
-        <option value="">Informe o grupo de permissões</option>
+        <option value="">Informe o treino de permissões</option>
         @foreach ($roles as $role)
             <option value="{{ $role->id }}" {{ $isRoleSelected($role) }}>{{ $role->name }}
             </option>

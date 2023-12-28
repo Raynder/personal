@@ -9,7 +9,7 @@ use App\Repositories\EmpresaRepository;
 use App\ViewModels\EmpresaViewModel;
 use App\Helpers\FormatterHelper;
 use App\Helpers\StringHelper;
-use App\Models\Certificado;
+use App\Models\Aluno;
 use App\Models\Empresa;
 use App\Models\User;
 use Carbon\Carbon;
@@ -74,10 +74,6 @@ class EmpresaController extends Controller
         try {
             DB::beginTransaction();
             $input = $request->all();
-            $input['telefone'] = FormatterHelper::onlyNumbers($input['telefone']);
-            $input['cnpj'] = FormatterHelper::onlyNumbers($input['cnpj']);
-            $input['client_token'] = hash('sha256', $input['cnpj'] . date('Y-m-d H:i:s'));
-            $input['cnpj_raiz'] = substr($input['cnpj'], 0, 8);
             $empresa = $this->empresaRepository->create($input);
             $incluirUsuario = $request->input('incluirMaster') == 'S';
             $senha = $request->input('senha');
@@ -114,25 +110,6 @@ class EmpresaController extends Controller
         if (!$empresa) {
             return response()->json("Registro não encontrado.", 500);
         }
-
-        $certificado = $request->file('certificado');
-        if ($certificado) {
-            $filename = $certificado->getClientOriginalName();
-            if (!\str_ends_with($filename, '.pfx')) {
-                return response()->json('Arquivo Inv&aacute;lido.', 500);
-            }
-            $certificado = file_get_contents($certificado->getRealPath());
-            $certs = [];
-            if (!openssl_pkcs12_read($certificado, $certs, $request->input('senha_certificado'))) {
-                return response()->json('Senha inv&aacute;lida.', 500);
-            }
-        }
-        $input['telefone'] = FormatterHelper::onlyNumbers($input['telefone']);
-        $input['celular'] = FormatterHelper::onlyNumbers($input['celular']);
-        $input['cnpj'] = FormatterHelper::onlyNumbers($input['cnpj']);
-        $input['cnpj_raiz'] = substr($input['cnpj'], 0, 8);
-        $input['client_token'] = hash('sha256', $input['cnpj'] . date('Y-m-d H:i:s'));
-
         $this->empresaRepository->update($empresa, $input);
         return response()->json("Salvo com sucesso.", 200);
     }
@@ -196,7 +173,7 @@ class EmpresaController extends Controller
             return response()->json("Registro não encontrado.", 500);
         }
         $chave = Str::random(44);
-        $certificado = Certificado::create([
+        $certificado = Aluno::create([
             'empresa_id' => $empresa->id,
             'chave' => $chave,
             'data_validade' => Carbon::now()->addDays(1),

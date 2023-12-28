@@ -11,7 +11,7 @@
             @forelse($empresas as $obj)
                 <tr id="row_{{ $obj->id }}" class="@if ($obj->deleted_at != null) table-danger @endif">
                     <td>{{ App\Helpers\FormatterHelper::formatCnpjCpf($obj->cnpj) }} | {{ $obj->fantasia }}</td>
-                    <td>{{ $obj->certificados_count }} Certificados</td>
+                    <td>{{ $obj->alunos_count }} Certificados</td>
                     <td width="120" class="text-center">
                         <a href="javascript:void(0);"
                             onclick="Tela.abrirJanela('{{ route('empresas.edit', [$obj->id]) }}', 'Editar Empresa', 'lg')"

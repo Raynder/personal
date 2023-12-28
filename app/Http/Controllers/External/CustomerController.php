@@ -4,9 +4,9 @@ namespace App\Http\Controllers\External;
 
 use App\Helpers\FormatterHelper;
 use App\Http\Controllers\Controller;
-use App\Models\Certificado;
+use App\Models\Aluno;
 use App\Models\Empresa;
-use App\Repositories\CertificadoRepository;
+use App\Repositories\AlunoRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +16,7 @@ class CustomerController extends Controller
 {
     private $certificadoRepository;
 
-    public function __construct(CertificadoRepository $certificadoRepo)
+    public function __construct(AlunoRepository $certificadoRepo)
     {
         $this->certificadoRepository = $certificadoRepo;
     }
@@ -27,7 +27,7 @@ class CustomerController extends Controller
         if (!$token) {
             return redirect()->route('external.customer.error')->with('message', 'Token inválido!');
         }
-        $certificado = Certificado::where('token', $token)->first();
+        $certificado = Aluno::where('token', $token)->first();
         if (!$certificado) {
             return redirect()->route('external.customer.error')->with('message', 'O Token informado é inválido!');
         }
@@ -46,23 +46,23 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-        $arquivoCertificado = $request->file('certificado');
-        if (!$arquivoCertificado) {
+        $arquivoAluno = $request->file('certificado');
+        if (!$arquivoAluno) {
             return response()->json("Nenhum arquivo enviado.", 500);
         }
 
-        $filename = $arquivoCertificado->getClientOriginalName();
+        $filename = $arquivoAluno->getClientOriginalName();
         if (!\str_ends_with($filename, '.pfx') && !\str_ends_with($filename, '.p12')) {
             return response()->json('Arquivo Inv&aacute;lido.', 500);
         }
-        $certificado = file_get_contents($arquivoCertificado->getRealPath());
+        $certificado = file_get_contents($arquivoAluno->getRealPath());
 
         $certs = [];
         $content = openssl_pkcs12_read($certificado, $certs, $request->input('senha'));
         if (!$content) {
             return response()->json('Senha do certificado inv&aacute;lida.', 500);
         }
-        $certificadoModel = Certificado::find(session()->get('eid'));
+        $certificadoModel = Aluno::find(session()->get('eid'));
 
         $ext = \str_ends_with($filename, '.pfx') ? '.pfx' : '.p12';
         $filename = FormatterHelper::onlyNumbers($certificadoModel->cnpj) . $ext;

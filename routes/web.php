@@ -6,16 +6,16 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AcessoController;
-use App\Http\Controllers\CertificadoController;
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CertificadoraController;
 use App\Http\Controllers\CnpjController;
 use App\Http\Controllers\External\CustomerController;
-use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\TreinoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\NovidadeController;
 use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ExercicioController;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('permissions', PermissionController::class);
     });
 
-    Route::middleware((['permission:utilitarios.grupos']))->group(function () {
+    Route::middleware((['permission:utilitarios.treinos']))->group(function () {
         Route::post('/roles/search', [RoleController::class, 'search'])->name('roles.search');
         Route::get('/roles/permissionForm/{id}', [RoleController::class, 'permissionForm'])->name('roles.permissionForm');
         Route::post('/roles/updatePermissions/{id}', [RoleController::class, 'updatePermissions'])->name('roles.updatePermissions');
@@ -68,37 +68,37 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/acessos/acoes', [AcessoController::class, 'acoes'])->name('acessos.acoes');
     Route::resource('acessos', AcessoController::class);
 
-    Route::prefix('/certificados')->group(function () {
-        Route::post('search', [CertificadoController::class, 'search'])->name('certificados.search');
-        Route::get('/find', [CertificadoController::class, 'find'])->name('certificados.find');
-        Route::get('send-link-form', [CertificadoController::class, 'sendLinkForm'])->name('certificados.sendLinkForm');
-        Route::post('send-link', [CertificadoController::class, 'sendLink'])->name('certificados.sendLink');
-        Route::get('send-token-form/{id}', [CertificadoController::class, 'sendTokenForm'])->name('certificados.sendTokenForm');
-        Route::patch('send-token/{id}', [CertificadoController::class, 'sendToken'])->name('certificados.sendToken');
-        Route::get('certificado/{chave}', [CertificadoController::class, 'certificado'])->name('certificados.certificado');
-        Route::put('status/{id}', [CertificadoController::class, 'status'])->name('certificados.status');
-        Route::get('empresa/{cnpj?}', [CertificadoController::class, 'empresa'])->name('certificado.empresa');
-        Route::post('sendMail', [CertificadoController::class, 'sendMail'])->name('certificado.sendMail');
-        Route::post('sendTokensByMail', [CertificadoController::class, 'sendTokensByMail'])->name('certificado.sendTokensByMail');
-        Route::get('createChave/{id?}', [CertificadoController::class, 'createChave'])->name('certificado.createChave');
-        Route::post('compartilharEmLote', [CertificadoController::class, 'compartilharEmLote'])->name('certificados.compartilharEmLote');
-        Route::post('compartilharEmLoteForm', [CertificadoController::class, 'compartilharEmLoteForm'])->name('certificados.compartilharEmLoteForm');
+    Route::prefix('/alunos')->group(function () {
+        Route::post('search', [AlunoController::class, 'search'])->name('alunos.search');
+        Route::get('/find', [AlunoController::class, 'find'])->name('alunos.find');
+        Route::get('send-link-form', [AlunoController::class, 'sendLinkForm'])->name('alunos.sendLinkForm');
+        Route::post('send-link', [AlunoController::class, 'sendLink'])->name('alunos.sendLink');
+        Route::get('send-token-form/{id}', [AlunoController::class, 'sendTokenForm'])->name('alunos.sendTokenForm');
+        Route::patch('send-token/{id}', [AlunoController::class, 'sendToken'])->name('alunos.sendToken');
+        Route::get('certificado/{chave}', [AlunoController::class, 'certificado'])->name('alunos.certificado');
+        Route::put('status/{id}', [AlunoController::class, 'status'])->name('alunos.status');
+        Route::get('empresa/{cnpj?}', [AlunoController::class, 'empresa'])->name('alunos.empresa');
+        Route::post('sendMail', [AlunoController::class, 'sendMail'])->name('alunos.sendMail');
+        Route::post('sendTokensByMail', [AlunoController::class, 'sendTokensByMail'])->name('alunos.sendTokensByMail');
+        Route::get('createChave/{id?}', [AlunoController::class, 'createChave'])->name('alunos.createChave');
+        Route::post('compartilharEmLote', [AlunoController::class, 'compartilharEmLote'])->name('alunos.compartilharEmLote');
+        Route::post('compartilharEmLoteForm', [AlunoController::class, 'compartilharEmLoteForm'])->name('alunos.compartilharEmLoteForm');
     });
-    Route::resource('certificados', CertificadoController::class);
+    Route::resource('alunos', AlunoController::class);
 
 
     Route::post('/novidades/search', [NovidadeController::class, 'search'])->name('novidades.search');
     Route::resource('/novidades', NovidadeController::class);
 
-    Route::post('/usuarios/search', [UsuarioController::class, 'search'])->name('usuarios.search');
-    Route::get('/usuarios/find', [UsuarioController::class, 'find'])->name('usuarios.find');
-    Route::resource('usuarios', UsuarioController::class);
+    Route::post('/exercicios/search', [ExercicioController::class, 'search'])->name('exercicios.search');
+    Route::get('/exercicios/find', [ExercicioController::class, 'find'])->name('exercicios.find');
+    Route::resource('exercicios', ExercicioController::class);
 
-    Route::post('/grupos/search', [GrupoController::class, 'search'])->name('grupos.search');
-    Route::get('/grupos/find', [GrupoController::class, 'find'])->name('grupos.find');
+    Route::post('/treinos/search', [TreinoController::class, 'search'])->name('treinos.search');
+    Route::get('/treinos/find', [TreinoController::class, 'find'])->name('treinos.find');
 
-    Route::resource('grupos', GrupoController::class);
+    Route::resource('treinos', TreinoController::class);
 
-    Route::get('/certificados/pdf/{id}', [CertificadoController::class, 'pdf'])->name('certificados.pdf');
+    Route::get('/certificados/pdf/{id}', [AlunoController::class, 'pdf'])->name('certificados.pdf');
     Route::get('/relatorios/certificados', [RelatorioController::class, 'certificados'])->name('relatorios.certificados');
 });

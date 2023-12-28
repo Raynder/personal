@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Api\CertificadoController;
 use App\Http\Controllers\Api\NovidadeController;
-use App\Http\Controllers\Api\UsuarioController;
+use App\Http\Controllers\Api\ExercicioController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/certificado', [CertificadoController::class, 'download']);
@@ -20,4 +20,4 @@ Route::get('/certificado/getAllCertificates', [CertificadoController::class, 'ge
 
 Route::post('/novidades/verify', [NovidadeController::class, 'verify']);
 
-Route::post('/usuarios/create', [UsuarioController::class, 'create']);
+Route::post('/usuarios/create', [ExercicioController::class, 'create']);

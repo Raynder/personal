@@ -4,45 +4,63 @@
         <table class="table table-hover">
             <thead class="table-header">
                 <tr class="sticky-top">
-                    <th style="background-color: #677788 !important; color: white;">Nome</th>
-                    <th class="text-center" style="background-color: #677788 !important; color: white;">E-mail</th>
-                    <th class="text-center" style="background-color: #677788 !important; color: white;">Opções</th>
+                    <th style="width: 10px;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="aluno_id_todos"
+                                name="aluno_id_todos"
+                                onclick="Utils.selecionarTodosOsCheckBoxes('chkCertificadoId', 'aluno_id_todos')" />
+                        </div>
+                    </th>
+                    {!! App\Helpers\TableHelper::sortable_column('razao_social', 'Nome') !!}
+                    <th>E-mail</th>
+                    <th class="text-center">Opções</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($alunos as $obj)
-                    <tr id="row_{{ $obj->id }}">
-                        <td>{{ $obj->razao_social }}</td>
+                    <tr id="row_{{ $obj->id }}" class="@if ($obj->deleted_at != null) table-danger @endif">
+                        <td>
+                            <div class="form-check">
+                                <input type="checkbox" name="aluno_id[]" id="aluno_id_{{ $obj->id }}"
+                                    class="form-check-input chkCertificadoId" value="{{ $obj->id }}" />
+                            </div>
+                        </td>
+                        <td>{{ $obj->nome }}</td>
                         <td>{{ $obj->email }}</td>
                         <td width="150" class="text-center">
                             <div class='btn-group'>
-                                @if (!$obj->aluno)
+                                {{-- @if (!$obj->aluno)
                                     <a href="javascript:void(0);"
                                         onclick="Tela.abrirJanela('{{ route('alunos.sendTokenForm', [$obj->id]) }}', 'Enviar Token', 'xs')"
                                         class="btn-table btn-xs">
-                                        <i class="fas fa-key"></i>
+                                        <i class="fas fa-envelope"></i>
                                     </a>
-                                @endif
+                                @endif --}}
                                 @if ($obj->aluno)
                                     <a href="javascript:void(0);"
                                         onclick="Tela.abrirJanela('{{ route('alunos.createChave', [$obj->id]) }}', 'Chave de Acesso:', 'xs')"
-                                        class="btn-table btn-xs">
-                                        <i class="fas fa-key"></i>
+                                        class="btn-table btn-xs" data-bs-toggle="tooltip" data-color="primary"
+                                        data-bs-placement="top"
+                                        data-bs-original-title="Enviar este aluno por e-mail">
+                                        <i class="fas fa-envelope"></i>
                                     </a>
                                     <a href="javascript:void(0);"
-                                        onclick="Tela.abrirJanela('{{ route('alunos.show', [$obj->id]) }}', 'Visualizar Certificado', 'lg')"
-                                        class="btn-table btn-xs">
+                                        onclick="Tela.abrirJanela('{{ route('alunos.show', [$obj->id]) }}', 'Visualizar Aluno', 'lg')"
+                                        class="btn-table btn-xs" data-bs-toggle="tooltip" data-color="primary"
+                                        data-bs-placement="top" data-bs-original-title="Exibir detalhes do aluno">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                 @endif
                                 <a href="javascript:void(0);"
-                                    onclick="Tela.abrirJanela('{{ route('alunos.edit', [$obj->id]) }}', 'Editar Certificado', 'lg')"
-                                    class="btn-table btn-xs">
+                                    onclick="Tela.abrirJanela('{{ route('alunos.edit', [$obj->id]) }}', 'Editar Aluno', 'lg')"
+                                    class="btn-table btn-xs" data-bs-toggle="tooltip" data-color="primary"
+                                    data-bs-placement="top" data-bs-original-title="Alterar aluno">
                                     <i class="fa fa-pencil-alt"></i>
                                 </a>
                                 <a href="javascript:void(0);"
                                     onclick="Tela.abrirJanelaExcluir('{{ route('alunos.destroy', [$obj->id]) }}?_token={{ csrf_token() }}', '{{ $obj->id }}')"
-                                    class="btn-table btn-table-danger btn-xs">
+                                    class="btn-table btn-table-danger btn-xs" data-bs-toggle="tooltip"
+                                    data-color="danger" data-bs-placement="top" data-bs-original-title="Excluir">
                                     <i class="fa fa-trash-alt"></i>
                                 </a>
                             </div>
@@ -79,3 +97,6 @@
         </div>
     </div>
 </div>
+<script>
+    registerTooltip();
+</script>

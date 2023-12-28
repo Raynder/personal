@@ -17,9 +17,9 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{ route('certificados.index') }}" class="menu-link">
-                                <i class="menu-icon tf-icons bx bx-key"></i>
-                                <div>Certificados</div>
+                            <a href="{{ route('alunos.index') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bxs-group"></i>
+                                <div>Alunos</div>
                             </a>
                         </li>
                         <li class="menu-item">
@@ -30,9 +30,9 @@
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a href="{{ route('usuarios.index') }}" class="menu-link">
+                            <a href="{{ route('exercicios.index') }}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bxs-user"></i>
-                                <div>Usuários</div>
+                                <div>Exercicios</div>
                             </a>
                         </li>
                     </ul>
@@ -46,9 +46,9 @@
 
                     <ul class="menu-sub">
                         <li class="menu-item">
-                            <a href="{{ route('grupos.index') }}" class="menu-link">
-                                <i class="menu-icon tf-icons bx bxs-group"></i>
-                                <div>Grupos</div>
+                            <a href="{{ route('treinos.index') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bxs-user-account"></i>
+                                <div>Treinos</div>
                             </a>
                         </li>
                     </ul>

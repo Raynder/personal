@@ -7,7 +7,7 @@ use App\Models\Empresa;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+class ExercicioController extends Controller
 {
     public function create(Request $request)
     {

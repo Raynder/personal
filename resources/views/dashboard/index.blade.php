@@ -6,19 +6,19 @@
                 <div class="col-6 col-md-4 col-lg-2 mb-4">
                     <div class="card h-100" style="cursor: pointer">
                         <div class="card-body text-center"
-                            onclick="window.location.href = '{{ route('certificados.index') }}'">
+                            onclick="window.location.href = '{{ route('alunos.index') }}'">
                             <div class=" mx-auto mb-2">
-                                <i class="fas fa-key fa-2x"></i>
+                                <i class="fas fa-users fa-2x"></i>
                             </div>
-                            <span class="d-block text-nowrap">Certificados</span>
-                            <h2 class="mb-0">{{ $certificados->count() }}</h2>
+                            <span class="d-block text-nowrap">Alunos</span>
+                            <h2 class="mb-0">{{ $alunos->count() }}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-lg-2 mb-4">
                     <div class="card h-100" style="cursor: pointer">
                         <div class="card-body text-center"
-                            onclick="window.location.href = '{{ route('usuarios.index') }}'">
+                            onclick="window.location.href = '{{ route('exercicios.index') }}'">
                             <div class="mx-auto mb-2">
                                 <i class="fa fa-user fa-2x"></i>
                             </div>
@@ -30,12 +30,12 @@
                 <div class="col-6 col-md-4 col-lg-2 mb-4">
                     <div class="card h-100" style="cursor: pointer">
                         <div class="card-body text-center"
-                            onclick="window.location.href = '{{ route('grupos.index') }}'">
+                            onclick="window.location.href = '{{ route('treinos.index') }}'">
                             <div class="mx-auto mb-2">
                                 <i class="fa fa-users fa-2x"></i>
                             </div>
-                            <span class="d-block text-nowrap">Grupos</span>
-                            <h2 class="mb-0">{{ $grupos->count() }}</h2>
+                            <span class="d-block text-nowrap">Treinos</span>
+                            <h2 class="mb-0">{{ $treinos->count() }}</h2>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                 <i class="far fa-calendar-alt fa-2x"></i>
                             </div>
                             <span class="d-block text-nowrap">7 dias<br>Vencimento</span>
-                            <h2 class="mb-0">{{ $certificados7->count() }}</h2>
+                            <h2 class="mb-0">{{ $alunos7->count() }}</h2>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                                 <i class="far fa-calendar-alt fa-2x"></i>
                             </div>
                             <span class="d-block text-nowrap">15 dias<br>Vencimento</span>
-                            <h2 class="mb-0">{{ $certificados15->count() }}</h2>
+                            <h2 class="mb-0">{{ $alunos15->count() }}</h2>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                                 <i class="far fa-calendar-alt fa-2x"></i>
                             </div>
                             <span class="d-block text-nowrap">30 dias<br>Vencimento</span>
-                            <h2 class="mb-0">{{ $certificados30->count() }}</h2>
+                            <h2 class="mb-0">{{ $alunos30->count() }}</h2>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="col-12 col-md-6 col-lg-12 mb-4">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center pb-3">
-                            <h5 class="card-title mb-0">Certificados a vencer
+                            <h5 class="card-title mb-0">Planos a vencer
                             </h5>
                         </div>
                         <form name="formSearch" id="formSearch" method="post" action="{{ route('dashboard.search') }}">
@@ -115,7 +115,7 @@
 
                         function executarLista(titulo) {
                             var formData = $("#fmCertificados").serialize();
-                            var url = "{{ route('certificados.compartilharEmLoteForm') }}";
+                            var url = "{{ route('alunos.compartilharEmLoteForm') }}";
                             Tela.abrirJanelaPost(url, titulo, formData, 'G');
                         }
                     </script>

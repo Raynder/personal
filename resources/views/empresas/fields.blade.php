@@ -3,16 +3,6 @@
         $(".select2-padrao").select2({
             dropdownParent: "#modalBasic"
         });
-        $("#cnpj").focus();
-        Input.telefone("#telefone");
-        Input.cnpj("#cnpj");
-        $("#cnpj").blur(function() {
-            Utils.buscarDadosEmpresa(this.value, '{{ route('search.cnpj') }}');
-        });
-
-        @if ($empresa->id)
-            document.getElementById("cnpj").setAttribute('readonly', true);
-        @endif
 
         $("#chkMaster").change(function() {
             if ($(this).is(':checked')) {
@@ -28,11 +18,6 @@
 
 <div class="row">
     <div class="form-group col-sm-4">
-        {!! Form::label('cnpj', 'CNPJ:') !!}
-        {!! Form::text('cnpj', null, ['class' => 'form-control', 'maxlength' => 18]) !!}
-    </div>
-
-    <div class="form-group col-sm-4">
         {!! Form::label('razao_social', 'Razão Social:') !!}
         {!! Form::text('razao_social', null, ['class' => 'form-control', 'maxlength' => 150]) !!}
     </div>
@@ -40,16 +25,6 @@
     <div class="form-group col-sm-4">
         {!! Form::label('fantasia', 'Fantasia:') !!}
         {!! Form::text('fantasia', null, ['class' => 'form-control', 'maxlength' => 150]) !!}
-    </div>
-
-    <div class="form-group col-sm-4 required">
-        {!! Form::label('contato', 'Nome do Contato:') !!}
-        {!! Form::text('contato', null, ['class' => 'form-control', 'maxlength' => 150, 'required']) !!}
-    </div>
-
-    <div class="form-group col-sm-4 required">
-        {!! Form::label('telefone', 'Telefone:') !!}
-        {!! Form::text('telefone', null, ['class' => 'form-control', 'id' => 'telefone', 'required']) !!}
     </div>
 </div>
 

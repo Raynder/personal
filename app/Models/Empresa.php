@@ -14,13 +14,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version September 11, 2023, 14:46 am -03
  *
  * @property int $id
- * @property string $cnpj
- * @property string $cnpj_raiz
  * @property string $razao_social
  * @property string $fantasia
- * @property string $telefone
- * @property string $celular
- * @property string $contato
  * @property string $email
  */
 class Empresa extends Model
@@ -31,15 +26,9 @@ class Empresa extends Model
     protected $dates = ['deleted_at', 'data_abertura'];
 
     public $fillable = [
-        'cnpj',
-        'cnpj_raiz',
         'razao_social',
         'fantasia',
-        'telefone',
-        'celular',
-        'contato',
         'email',
-        'client_token',
     ];
 
     // /**
@@ -50,8 +39,8 @@ class Empresa extends Model
     //     return $this->belongsToMany(User::class, 'empresa_users', 'empresa_id', 'user_id');
     // }
 
-    public function certificados()
+    public function alunos()
     {
-        return $this->hasMany(Certificado::class, 'empresa_id');
+        return $this->hasMany(Aluno::class, 'empresa_id');
     }
 }

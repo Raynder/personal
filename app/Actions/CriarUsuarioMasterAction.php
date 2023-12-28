@@ -18,7 +18,7 @@ class CriarUsuarioMasterAction
     public function __invoke(Empresa $empresa, $senha = null): void
     {
         $dadosUsuario = [
-            'name' => $empresa->contato,
+            'name' => $empresa->razao_social,
             'email' => $empresa->email,
             'empresa_id' => $empresa->id,
             'password' => $senha ? bcrypt($senha) : null,
